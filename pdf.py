@@ -11,16 +11,6 @@ import pyperclip
 
 def main():
 
-    # Checks command-line arguments entered
-    if len(sys.argv) < 2:
-        print("Converts ppt files in copied path to pdf.")
-        print("Usage: pdf convertppt")
-        sys.exit()
-
-    if sys.argv[1] != "convertppt":
-        print("Incorrect usage. Try entering 'pdf'")
-        sys.exit()
-
     # Checks if copied path is a valid path which exists.
     if os.path.exists(pyperclip.paste())\
             and not os.path.isfile(pyperclip.paste()):
@@ -32,9 +22,11 @@ def main():
 
             # Checks if the file extension has ".ppt" in it.
             if os.path.splitext(file)[1].find(".ppt") != -1:
+                print(f"{file} Converting..")
 
                 # Calls Libreoffice to convert said file into pdf.
                 sp.call(['soffice', '--headless', '--convert-to', 'pdf', file])
+                print("Done.")
     else:
         print("Invalid path, Try again with valid path")
 
