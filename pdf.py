@@ -4,13 +4,14 @@ to pdf
 
 """
 import os
-import re
 import subprocess as sp
 import sys
 import pyperclip
 
 
 def main():
+
+    # Checks command-line arguments entered
     if len(sys.argv) < 2:
         print("Converts ppt files in copied path to pdf.")
         print("Usage: pdf convertppt")
@@ -20,14 +21,19 @@ def main():
         print("Incorrect usage. Try entering 'pdf'")
         sys.exit()
 
+    # Checks if copied path is a valid path which exists.
     if os.path.exists(pyperclip.paste())\
             and not os.path.isfile(pyperclip.paste()):
-        os.chdir(pyperclip.paste())
-        r = re.compile(r".*\.ppt")
 
+        # Changes to copied directory and takes all files into a list.
+        os.chdir(pyperclip.paste())
         files = os.listdir(os.getcwd())
         for file in files:
-            if re.search(r, file):
+
+            # Checks if the file extension has ".ppt" in it.
+            if os.path.splitext(file)[1].find(".ppt") != -1:
+
+                # Calls Libreoffice to convert said file into pdf.
                 sp.call(['soffice', '--headless', '--convert-to', 'pdf', file])
     else:
         print("Invalid path, Try again with valid path")
