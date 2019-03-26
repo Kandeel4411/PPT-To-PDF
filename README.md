@@ -7,5 +7,5 @@ Prerequisite:
 Usage:
 - Download pdf.exe from the repo
 
-* Copy the directory which includes the files you want to convert
+* Copy the path of the folder which includes the files you want to convert
 * Run pdf.exe
