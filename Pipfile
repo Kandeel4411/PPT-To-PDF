@@ -12,7 +12,7 @@ future = "==0.17.1"
 macholib = "==1.11"
 pefile = "==2018.8.8"
 pywin32-ctypes = "==0.2.0"
-PyInstaller = "==3.4"
+PyInstaller = "==3.6"
 
 [requires]
 python_version = "3.7"
